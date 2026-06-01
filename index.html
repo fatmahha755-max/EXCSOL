@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXCSOL Company Profile</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fff; overflow-x: hidden; }
+.wrap { background: #fff; color: #111; direction: rtl; }
+.logo-font { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; letter-spacing: 0; }
+.cover { position: relative; min-height: clamp(340px, 48vw, 500px); overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px); }
+.cover > img { display: none; }
+.cover-overlay { display: none; }
+.cover-text { position: relative; width: 100%; max-width: 1180px; display: flex; justify-content: space-between; align-items: center; gap: clamp(24px, 4vw, 40px); }
+.cover-eyebrow { font-size: 9px; letter-spacing: 4px; color: #888; text-transform: uppercase; margin-bottom: 18px; }
+.cover-brand { font-size: 42px; font-weight: 700; color: #fff; letter-spacing: -1px; line-height: 1; }
+.cover-logo { width: min(520px, 72vw); height: auto; display: block; background: transparent; padding: 0; margin: 0 0 16px; }
+.cover-sub { font-size: 11px; color: #777; letter-spacing: 3px; text-transform: uppercase; margin-top: 6px; }
+.cover-right { text-align: left; }
+.cover-year { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(54px, 8vw, 86px); font-weight: 900; color: #efefef; line-height: 1; letter-spacing: -3px; }
+.cover-tagline { font-size: 11px; color: #999; letter-spacing: 2px; text-transform: uppercase; text-align: left; margin-top: -8px; }
+.rule { height: 1px; background: #e8e8e8; margin: 0; }
+.rule-thick { height: 3px; background: #111; margin: 0; }
+.chapter-bar { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 22px clamp(24px, 4vw, 48px); background: #111; }
+.chapter-num { font-size: 20px; letter-spacing: 2px; color: rgba(255,255,255,0.72); text-transform: uppercase; font-weight: 700; }
+.chapter-title { font-size: clamp(18px, 2.2vw, 22px); letter-spacing: 6px; color: #fff; text-transform: uppercase; font-weight: 900; }
+.spread { display: grid; grid-template-columns: 1fr 1fr; min-height: clamp(280px, 36vw, 420px); }
+.spread-img { overflow: hidden; background: #eee; }
+.spread-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-spread { min-height: 360px; }
+.about-spread .spread-img { min-height: 360px; max-height: 420px; }
+.about-spread .spread-img img { object-position: center center; }
+.spread-text { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+.spread-text.dark { background: #111; }
+.eyebrow { font-size: 9px; letter-spacing: 4px; color: #999; text-transform: uppercase; margin-bottom: 16px; }
+.eyebrow.light { color: rgba(255,255,255,0.4); }
+.big-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(24px, 3vw, 34px); font-weight: 900; color: #111; line-height: 1.22; letter-spacing: 0; margin-bottom: 18px; white-space: normal; }
+.big-title.light { color: #fff; }
+.body-text { font-size: clamp(14px, 1.6vw, 17px); color: #555; line-height: 2.05; }
+.body-text.light { color: rgba(255,255,255,0.55); }
+.works-intro { background: #111; color: #fff; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; }
+.works-intro-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 24px; font-weight: 900; line-height: 1; }
+.works-intro-line { height: 1px; background: rgba(255,255,255,0.45); flex: 1; margin-right: 24px; }
+.full-img { height: auto; overflow: visible; background: #111; position: relative; }
+.full-img img { width: 100%; max-height: 680px; height: auto; object-fit: cover; display: block; }
+.full-img-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 48px; display: flex; justify-content: space-between; align-items: flex-end; background: rgba(0,0,0,0); }
+.img-label { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.7); text-transform: uppercase; background: rgba(0,0,0,0.45); padding: 5px 12px; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
+.stat-item { padding: 36px 40px; border-left: 1px solid #e8e8e8; text-align: center; }
+.stat-item:last-child { border-left: none; }
+.stat-big { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 58px; font-weight: 900; color: #111; letter-spacing: -2px; line-height: 1; direction: ltr; }
+.stat-big.is-animating { animation: stat-pop 560ms ease-out both; }
+.stat-small { font-size: 13px; letter-spacing: 0; color: #777; margin-top: 12px; }
+@keyframes stat-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.94); }
+  70% { opacity: 1; transform: translateY(0) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.three-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-item { position: relative; overflow: hidden; background: #eee; height: 240px; }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; flex-direction: column; justify-content: flex-end; padding: 18px 20px; }
+.grid-cat { font-size: 8px; letter-spacing: 3px; color: rgba(255,255,255,0.6); text-transform: uppercase; background: rgba(0,0,0,0.5); display: inline-block; padding: 4px 10px; margin-bottom: 4px; }
+.grid-name { font-size: 14px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.55); display: inline-block; padding: 4px 10px; }
+.featured-projects { padding: 64px 48px 70px; background: #000; color: #fff; direction: rtl; }
+.featured-header { text-align: right; margin-bottom: 42px; }
+.featured-kicker { color: #48bde5; font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+.featured-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(30px, 4.4vw, 48px); font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: 0; }
+.featured-slider { position: relative; direction: ltr; }
+.featured-grid { display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 2px 0 24px; scrollbar-width: none; }
+.featured-grid::-webkit-scrollbar { display: none; }
+.project-card { position: relative; min-height: 300px; width: clamp(270px, 27vw, 320px); flex: 0 0 clamp(270px, 27vw, 320px); scroll-snap-align: start; direction: rtl; padding: 34px 26px 28px; background: #fff; border: 2px solid rgba(72,189,229,0.72); border-top: 14px solid #48bde5; border-radius: 16px; overflow: hidden; text-align: right; box-shadow: 0 14px 28px rgba(0,0,0,0.14); }
+.project-index { position: absolute; top: 22px; right: 30px; font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 44px; font-weight: 900; color: rgba(72,189,229,0.24); direction: ltr; line-height: 1; }
+.project-title { position: relative; font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; color: #0b0a0a; line-height: 1.4; margin: 54px 0 14px; letter-spacing: 0; }
+.project-tag { position: relative; display: inline-flex; border: 1px solid rgba(72,189,229,0.72); color: #48bde5; border-radius: 999px; padding: 6px 18px; font-size: 14px; font-weight: 700; margin-bottom: 18px; }
+.project-desc { position: relative; font-size: 14px; line-height: 1.9; color: #141414; font-weight: 700; }
+.project-gallery-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; margin-top: 22px; border: 1px solid #48bde5; background: #48bde5; color: #050505; border-radius: 999px; padding: 9px 22px; font: inherit; font-size: 14px; font-weight: 900; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease; }
+.project-gallery-btn:hover { transform: translateY(-2px); background: transparent; color: #111; }
+.featured-arrow { position: absolute; top: 50%; z-index: 3; width: 46px; height: 46px; border: 1px solid rgba(72,189,229,0.65); border-radius: 50%; background: rgba(255,255,255,0.92); color: #111; font-size: 28px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 12px 28px rgba(0,0,0,0.12); transform: translateY(-50%); transition: transform 0.2s ease, background 0.2s ease; }
+.featured-arrow:hover { background: #48bde5; transform: translateY(-50%) scale(1.05); }
+.featured-arrow.prev{ left: -22px; }
+.featured-arrow.next{ right: -22px; }
+.gallery-modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(0,0,0,0.86); }
+.gallery-modal.is-open { display: flex; }
+.gallery-dialog { width: min(980px, 100%); background: #050505; border: 1px solid rgba(72,189,229,0.55); border-radius: 16px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,0.45); }
+.gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 22px; border-bottom: 1px solid rgba(72,189,229,0.2); color: #fff; }
+.gallery-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 20px; font-weight: 900; }
+.gallery-close { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; background: transparent; color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.gallery-main { background: #111; }
+.gallery-main img { width: 100%; height: min(62vh, 620px); object-fit: contain; display: block; }
+.gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 12px; background: #050505; }
+.gallery-thumb { border: 2px solid transparent; padding: 0; background: #111; cursor: pointer; overflow: hidden; border-radius: 8px; }
+.gallery-thumb.is-active { border-color: #48bde5; }
+.gallery-thumb img { width: 100%; height: 90px; object-fit: cover; display: block; opacity: 0.72; }
+.gallery-thumb.is-active img, .gallery-thumb:hover img { opacity: 1; }
+.services-section { padding: 56px 48px; background: #fff; }
+.services-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 40px; }
+.services-num { font-size: 80px; font-weight: 700; color: #f0f0f0; letter-spacing: -4px; line-height: 1; }
+.services-heading { font-size: 26px; font-weight: 700; color: #111; letter-spacing: -0.5px; }
+.services-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; row-gap: 0; }
+.service-row { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #f0f0f0; }
+.service-row:nth-child(-n+2) { border-top: 1px solid #f0f0f0; }
+.service-name { font-size: 15px; font-weight: 500; color: #111; }
+.service-tag { font-size: 9px; letter-spacing: 2px; color: #bbb; text-transform: uppercase; }
+.wood-section { background: #111; padding: 56px 48px; }
+.wood-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.wood-group-label { font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.wood-item { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: rgba(255,255,255,0.65); }
+.wood-dash { width: 16px; height: 1px; background: rgba(255,255,255,0.25); flex-shrink: 0; }
+.clients-section { padding: 56px 48px; background: #fafafa; }
+.clients-header { margin-bottom: 32px; }
+.clients-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; row-gap: 0; }
+.client-item { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee; }
+.client-item:nth-child(-n+2) { border-top: 1px solid #eee; }
+.client-index { font-size: 11px; color: #ccc; font-weight: 700; width: 24px; flex-shrink: 0; }
+.client-name { font-size: 14px; color: #222; font-weight: 400; }
+.why-section { padding: 0; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.why-item { padding: 40px 44px; border-bottom: 1px solid #eee; border-left: 1px solid #eee; }
+.why-item:nth-child(2n) { border-left: none; }
+.why-num { font-size: 32px; font-weight: 700; color: #f0f0f0; letter-spacing: -1px; margin-bottom: 12px; }
+.why-title { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 8px; }
+.why-desc { font-size: 12px; color: #888; line-height: 1.9; }
+.docs-section { padding: 56px 48px; background: #fafafa; border-top: 1px solid #eee; }
+.docs-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 28px; }
+.docs-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: 28px; font-weight: 900; color: #111; }
+.docs-sub { font-size: 10px; letter-spacing: 4px; color: #aaa; text-transform: uppercase; }
+.docs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #e5e5e5; border: 1px solid #e5e5e5; }
+.doc-card { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 30px; background: #fff; color: #111; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+.doc-card:hover { background: #111; color: #fff; }
+.doc-name { font-size: 17px; font-weight: 800; }
+.doc-type { font-size: 10px; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
+.doc-arrow { font-size: 24px; line-height: 1; color: currentColor; }
+.whatsapp-section { padding: 42px 48px; background: #000; color: #fff; }
+.whatsapp-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 28px 34px; border: 1px solid rgba(72,189,229,0.5); border-radius: 14px; background: #111; color: inherit; text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+.whatsapp-card:hover { transform: translateY(-2px); border-color: #48bde5; background: #151515; }
+.whatsapp-kicker { display: block; font-size: 10px; letter-spacing: 4px; color: #48bde5; text-transform: uppercase; margin-bottom: 18px; }
+.whatsapp-title { display: block; font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(24px, 3vw, 34px); font-weight: 900; line-height: 1.2; }
+.whatsapp-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.whatsapp-number { direction: ltr; font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(26px, 4vw, 44px); font-weight: 900; color: #48bde5; white-space: nowrap; }
+.whatsapp-action { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; border-radius: 999px; background: #48bde5; color: #050505; font-size: 13px; font-weight: 900; }
+.footer { background: #111; padding: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
+.footer-brand { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -1px; }
+.footer-logo { width: 260px; max-width: 56vw; height: auto; display: block; background: transparent; padding: 0; margin-bottom: 14px; }
+.footer-sub { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-top: 4px; }
+.footer-right { text-align: left; }
+.footer-copy { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 1px; }
+.footer-tag { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+@media (max-width: 760px) {
+  .cover { min-height: 360px; }
+  .cover-text, .footer { padding: 28px 22px; }
+  .cover-text { flex-direction: column; align-items: flex-start; justify-content: center; padding: 0; }
+  .cover-logo { width: min(400px, 84vw); }
+  .cover-right { text-align: right; }
+  .chapter-bar, .services-section, .wood-section, .clients-section, .works-intro, .docs-section, .featured-projects { padding-left: 24px; padding-right: 24px; }
+  .chapter-bar { flex-wrap: wrap; }
+  .chapter-title { font-size: 18px; letter-spacing: 4px; }
+  .chapter-num { font-size: 16px; }
+  .spread, .why-grid, .wood-cols { grid-template-columns: 1fr; }
+  .spread-img { min-height: 260px; }
+  .about-spread { min-height: auto; }
+  .about-spread .spread-img { min-height: 260px; max-height: 320px; }
+  .about-spread .spread-img img { height: 100%; object-fit: cover; }
+  .full-img img { min-height: 220px; max-height: 360px; }
+  .full-img-caption { padding: 14px 20px; gap: 8px; flex-wrap: wrap; }
+  .three-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stat-item { padding: 24px 10px; }
+  .stat-big { font-size: clamp(32px, 10vw, 46px); letter-spacing: -1px; }
+  .stat-small { font-size: 11px; line-height: 1.5; margin-top: 8px; }
+  .featured-title { font-size: 30px; }
+  .featured-arrow{ width:38px; height:38px; font-size:22px; }
+  .featured-arrow.prev{ left:-8px; }
+  .featured-arrow.next{ right:-8px; }
+  .gallery-modal { padding: 16px; }
+  .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+  .gallery-main img { height: 52vh; }
+  .docs-header { flex-direction: column; align-items: flex-start; }
+  .docs-grid { grid-template-columns: 1fr; }
+  .doc-card { padding: 22px 20px; }
+  .whatsapp-section { padding: 34px 24px; }
+  .whatsapp-card { flex-direction: column; align-items: flex-start; padding: 24px 22px; }
+  .whatsapp-contact { align-items: flex-start; }
+  .whatsapp-title { font-size: 20px; }
+  .whatsapp-number { white-space: normal; word-break: break-word; }
+  .services-list { grid-template-columns: 1fr; }
+  .service-row { align-items: flex-start; gap: 14px; }
+  .service-row:nth-child(2) { border-top: none; }
+  .clients-grid { grid-template-columns: 1fr; }
+  .client-item:nth-child(2) { border-top: none; }
+  .spread-text, .why-item { padding: 36px 24px; }
+  .footer { align-items: flex-start; gap: 20px; flex-direction: column; }
+  .footer-right { text-align: right; }
+}
+
+/* Professional moving image carousel */
+.gallery-strip{
+  --gallery-bg:#fff;
+  position:relative;
+  background:var(--gallery-bg);
+  overflow:hidden;
+  padding:18px 54px;
+}
+.gallery-strip.warm{ --gallery-bg:#000; }
+.gallery-strip.clean{ --gallery-bg:#000; color:#fff; }
+.gallery-track{
+  display:flex;
+  gap:18px;
+  width:max-content;
+  transform:translate3d(var(--marquee-x, 0px), 0, 0);
+  will-change:transform;
+}
+.gallery-track .grid-item{
+  width:340px;
+  height:250px;
+  flex:0 0 auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 34px rgba(0,0,0,.24);
+}
+.gallery-track .grid-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.gallery-strip::before,
+.gallery-strip::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:90px;
+  z-index:2;
+  pointer-events:none;
+}
+.gallery-strip::before{ right:0; background:linear-gradient(to left,var(--gallery-bg),transparent); }
+.gallery-strip::after{ left:0; background:linear-gradient(to right,var(--gallery-bg),transparent); }
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  z-index:4;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,0.55);
+  border-radius:50%;
+  background:rgba(0,0,0,0.58);
+  color:#fff;
+  font-size:26px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transform:translateY(-50%);
+  transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.carousel-btn:hover{
+  background:rgba(255,255,255,0.18);
+  border-color:#fff;
+  transform:translateY(-50%) scale(1.05);
+}
+.carousel-btn.prev{ left:14px; }
+.carousel-btn.next{ right:14px; }
+
+@media (max-width:760px){
+  .gallery-strip{ padding:16px 46px; }
+  .gallery-track .grid-item{ width:min(280px, 70vw); height:210px; }
+  .carousel-btn{ width:36px; height:36px; font-size:22px; }
+}
+
+.office-spread{
+  grid-template-columns: 1fr 1fr;
+  direction:ltr;
+}
+.office-spread .spread-img{ grid-column:1; grid-row:1; }
+.office-spread .spread-text{ grid-column:2; grid-row:1; direction:rtl; background:#fff; }
+.office-spread .eyebrow.light{ color:#777; }
+.office-spread .big-title.light{ color:#000; }
+.office-spread .body-text.light{ color:#000; }
+
+@media (max-width:760px){
+  .office-spread{ grid-template-columns: minmax(0, 1fr); }
+  .office-spread .spread-img{ grid-column:1; grid-row:1; }
+  .office-spread .spread-text{ grid-column:1; grid-row:2; }
+  .office-spread .spread-text{ padding:30px 22px; }
+  .office-spread .big-title{ font-size:24px; white-space:normal; }
+  .office-spread .body-text{ font-size:14px; line-height:1.9; }
+}
+
+@media (max-width:520px){
+  .chapter-title { letter-spacing: 2px; }
+  .cover-sub, .cover-tagline, .eyebrow, .docs-sub { letter-spacing: 2px; }
+  .works-intro { padding-top: 16px; padding-bottom: 16px; }
+  .works-intro-title { font-size: 20px; }
+  .img-label { font-size: 8px; letter-spacing: 2px; }
+  .stat-big { font-size: clamp(28px, 9vw, 38px); }
+  .stat-small { font-size: 10px; }
+  .featured-projects { padding-top: 48px; padding-bottom: 52px; }
+  .featured-grid { gap: 18px; }
+  .project-card { flex-basis: min(270px, 78vw); width: min(270px, 78vw); min-height: 285px; padding: 30px 22px 24px; }
+  .project-title { font-size: 19px; margin-top: 48px; }
+  .project-desc { font-size: 13px; line-height: 1.8; }
+  .services-heading, .docs-title { font-size: 22px; }
+  .services-num { font-size: 58px; }
+  .about-spread .spread-img { min-height: 230px; max-height: 280px; }
+  .client-item, .service-row { flex-direction: column; align-items: flex-start; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <img src="ChatGPT Image May 13, 2026, 11_52_31 AM.png" alt="">
+    <div class="cover-overlay"></div>
+    <div class="cover-text">
+      <div>
+        <div class="cover-eyebrow">Company Profile · ملف الشركة</div>
+        <img class="cover-logo" src="excsol-logo-transparent.png" alt="EXCSOL">
+        <div class="cover-sub">Exceptional Solution · الحل الاستثنائي</div>
+      </div>
+      <div class="cover-right">
+        <div class="cover-year">25</div>
+        <div class="cover-tagline">Wood & Interior Specialists</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-thick"></div>
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-big" data-target="50" data-prefix="+">0</div><div class="stat-small">مشروع منفّذ</div></div>
+    <div class="stat-item"><div class="stat-big" data-target="3">0</div><div class="stat-small">قطاعات — سكني · تجاري · إداري</div></div>
+    <div class="stat-item"><div class="stat-big" data-target="15" data-prefix="+">0</div><div class="stat-small">نوع خشب مستخدم</div></div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">01 / من نحن</div><div class="chapter-title">About</div></div>
+  <div class="spread about-spread">
+    <div class="spread-img"><img src="ChatGPT Image May 13, 2026, 11_49_58 AM.png" alt=""></div>
+    <div class="spread-text">
+      <div class="eyebrow">الشركة المتحدة للأعمال الخشبية</div>
+      <div class="big-title">نجارة تُعيد تعريف المساحات</div>
+      <div class="body-text">متخصصون في أعمال النجارة والديكورات الخشبية وحلول التجهيز الداخلي المتكاملة. نُنفّذ مشاريع سكنية وتجارية وإدارية بأعلى معايير الجودة، من التصميم حتى التسليم.</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="works-intro">
+    <div class="works-intro-title">أبرز المشاريع</div>
+    <div class="works-intro-line"></div>
+  </div>
+  <div class="full-img">
+    <img src="بنر خشب.png" alt="">
+    <div class="full-img-caption"><span class="img-label">Heritage Doors · أبواب تراثية</span><span class="img-label">Riyadh, KSA</span></div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">02 / معرض الأعمال</div><div class="chapter-title">أعمالنا</div></div>
+  <div class="gallery-strip warm"><div class="gallery-track">
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_23_39 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Exterior</span><span class="grid-name">واجهات وأبواب</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_38_28 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Doors</span><span class="grid-name">باب خشبي مصمم</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_47_18 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Heritage</span><span class="grid-name">أبواب منقوشة</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_58_52 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Craft</span><span class="grid-name">حفر خشبي</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_15_52 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Display</span><span class="grid-name">تصميم تراثي</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_23_39 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Exterior</span><span class="grid-name">واجهات وأبواب</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_38_28 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Doors</span><span class="grid-name">باب خشبي مصمم</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_47_18 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Heritage</span><span class="grid-name">أبواب منقوشة</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 07_58_52 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Craft</span><span class="grid-name">حفر خشبي</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_15_52 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Display</span><span class="grid-name">تصميم تراثي</span></div></div>
+</div></div>
+
+  <div class="spread office-spread">
+    <div class="spread-text dark">
+      <div class="eyebrow light">Office Interior Works</div>
+      <div class="big-title light">بيئات عمل تعكس الاحترافية</div>
+      <div class="body-text light">نصمم مكاتب إدارية وقاعات اجتماعات بتفاصيل خشبية فاخرة، ومساحات عملية متكاملة تعكس هوية المكان واحترافية العمل.</div>
+    </div>
+    <div class="spread-img"><img src="ChatGPT Image May 16, 2026, 08_20_57 PM.png" alt=""></div>
+  </div>
+
+  <div class="gallery-strip clean"><div class="gallery-track">
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_03_40 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Wall Panels</span><span class="grid-name">بانلات وكسوات</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 13, 2026, 11_59_08 AM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Residential</span><span class="grid-name">ديكور سكني</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_05_53 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Woodwork</span><span class="grid-name">نجارة فنية</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_03_40 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Wall Panels</span><span class="grid-name">بانلات وكسوات</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 13, 2026, 11_59_08 AM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Residential</span><span class="grid-name">ديكور سكني</span></div></div>
+<div class="grid-item"><img src="ChatGPT Image May 16, 2026, 08_05_53 PM.png" alt=""><div class="grid-overlay"><span class="grid-cat">Woodwork</span><span class="grid-name">نجارة فنية</span></div></div>
+</div></div>
+
+  <section class="featured-projects">
+    <div class="featured-header">
+      <div class="featured-kicker">أبرز المشاريع</div>
+      <div class="featured-title">مشاريع منجزة تتحدث عن نفسها</div>
+    </div>
+    <div class="featured-slider">
+      <button class="featured-arrow prev" type="button" aria-label="المشاريع السابقة">‹</button>
+      <div class="featured-grid">
+      <article class="project-card">
+        <div class="project-index">01</div>
+        <h3 class="project-title">مطار الملك خالد</h3>
+        <div class="project-tag">مشروع حكومي كبير</div>
+        <p class="project-desc">بانلات وكسوات خشبية فنية بتصاميم موجية، مقاعد انتظار مدمجة، وأعمال تجهيز داخلي متكاملة في الصالات</p>
+        <button class="project-gallery-btn" type="button" data-gallery="kkia">عرض صور المشروع</button>
+      </article>
+      <article class="project-card">
+        <div class="project-index">02</div>
+        <h3 class="project-title">مشروع SAMA</h3>
+        <div class="project-tag">مشروع إداري</div>
+        <p class="project-desc">تنفيذ أعمال تجهيز داخلي مكتبي شاملة: بانلات خشبية، كسوات، وريسبشن بتصاميم عصرية مميزة</p>
+        <button class="project-gallery-btn" type="button" data-gallery="sama">عرض صور المشروع</button>
+      </article>
+      <article class="project-card">
+        <div class="project-index">03</div>
+        <h3 class="project-title">مشروع ELFANAR</h3>
+        <div class="project-tag">مشروع تجاري</div>
+        <p class="project-desc">ريسبشن دائري فاخر، مكاتب إدارية، أعمال زجاج، وديكورات خشبية بإضاءة مدمجة راقية</p>
+        <button class="project-gallery-btn" type="button" data-gallery="elfanar">عرض صور المشروع</button>
+      </article>
+      <article class="project-card">
+        <div class="project-index">04</div>
+        <h3 class="project-title">مشروع تبوك</h3>
+        <div class="project-tag">مشروع تراثي</div>
+        <p class="project-desc">أبواب خشبية تراثية بزخارف محفورة يدوياً، وواجهات بطابع نجدي أصيل يعكس الهوية السعودية</p>
+        <button class="project-gallery-btn" type="button" data-gallery="tabuk">عرض صور المشروع</button>
+      </article>
+      <article class="project-card">
+        <div class="project-index">05</div>
+        <h3 class="project-title">مشروع ELDEWAN</h3>
+        <div class="project-tag">مشروع ترفيهي</div>
+        <p class="project-desc">أثاث جلسات فاخر، طاولات اجتماعات، وتشطيبات كافيه داخلي بأسلوب عصري أنيق</p>
+      </article>
+      <article class="project-card">
+        <div class="project-index">06</div>
+        <h3 class="project-title">مشروع الصافية</h3>
+        <div class="project-tag">مشروع ثقافي</div>
+        <p class="project-desc">تنفيذ منشآت معمارية ذات طابع ثقافي وحضاري متميز بمواد وتقنيات فاخرة</p>
+      </article>
+      </div>
+      <button class="featured-arrow next" type="button" aria-label="المشاريع التالية">›</button>
+    </div>
+  </section>
+
+  <div class="chapter-bar"><div class="chapter-num">03 / خدماتنا</div><div class="chapter-title">Services</div></div>
+  <div class="services-section">
+    <div class="services-header"><div class="services-num">06</div><div class="services-heading">مجالات التخصص</div></div>
+    <div class="services-list">
+      <div class="service-row"><div class="service-name">الأبواب الخشبية والكسوات والبانلات</div><div class="service-tag">Doors & Cladding</div></div>
+      <div class="service-row"><div class="service-name">تجهيز داخلي متكامل — سكني وتجاري وإداري</div><div class="service-tag">Full Interior Works</div></div>
+      <div class="service-row"><div class="service-name">مطاعم وكافيهات ومحلات تجارية</div><div class="service-tag">Hospitality & Retail</div></div>
+      <div class="service-row"><div class="service-name">غرف نوم وغرف ملابس وأثاث مخصص</div><div class="service-tag">Residential</div></div>
+      <div class="service-row"><div class="service-name">مكاتب إدارية وقاعات اجتماعات</div><div class="service-tag">Corporate</div></div>
+      <div class="service-row"><div class="service-name">ديكورات داخلية وتشطيبات خشبية متكاملة</div><div class="service-tag">Interior Works</div></div>
+    </div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">04 / الخامات</div><div class="chapter-title">Materials</div></div>
+  <div class="wood-section">
+    <div class="wood-cols">
+      <div>
+        <div class="wood-group-label">Natural Wood · الأخشاب الطبيعية</div>
+        <div class="wood-item"><span class="wood-dash"></span> الخشب السويدي</div>
+        <div class="wood-item"><span class="wood-dash"></span> خشب الزان</div>
+        <div class="wood-item"><span class="wood-dash"></span> خشب السنديان — Oak</div>
+        <div class="wood-item"><span class="wood-dash"></span> خشب التيك</div>
+        <div class="wood-item"><span class="wood-dash"></span> خشب الموسكي والماهوجني</div>
+        <div class="wood-item"><span class="wood-dash"></span> القشرة الطبيعية بجميع أنواعها</div>
+      </div>
+      <div>
+        <div class="wood-group-label">Engineered Wood · الأخشاب الصناعية</div>
+        <div class="wood-item"><span class="wood-dash"></span> MDF / HDF</div>
+        <div class="wood-item"><span class="wood-dash"></span> Chipboard / Melamine</div>
+        <div class="wood-item"><span class="wood-dash"></span> Plywood</div>
+        <div class="wood-item"><span class="wood-dash"></span> كونتر · أبلكاش</div>
+        <div class="wood-item"><span class="wood-dash"></span> ألواح PVC</div>
+        <div class="wood-item"><span class="wood-dash"></span> Compact HPL</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">05 / عملاؤنا</div><div class="chapter-title">Clients</div></div>
+  <div class="clients-section">
+    <div class="clients-header"><div style="font-size:9px; letter-spacing:4px; color:#bbb; text-transform:uppercase; margin-bottom:4px;">Trusted Partners</div><div style="font-size:22px; font-weight:700; color:#111; letter-spacing:-0.5px;">شركاء النجاح</div></div>
+    <div class="clients-grid">
+      <div class="client-item"><span class="client-index">01</span><span class="client-name">الشركة المتحدة لأعمال التنمية الصناعية والمقاولات المحدودة</span></div>
+      <div class="client-item"><span class="client-index">02</span><span class="client-name">شركة تقنيات ميب للمقاولات</span></div>
+      <div class="client-item"><span class="client-index">03</span><span class="client-name">شركة مرسى البحار للمقاولات العامة</span></div>
+      <div class="client-item"><span class="client-index">04</span><span class="client-name">شركة بناء وإدارة العقارية</span></div>
+      <div class="client-item"><span class="client-index">05</span><span class="client-name">شركة أورجانيك آرت</span></div>
+    </div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">06 / ما يميزنا</div><div class="chapter-title">Why EXCSOL</div></div>
+  <div class="why-section">
+    <div class="why-grid">
+      <div class="why-item"><div class="why-num">01</div><div class="why-title">جودة بلا تنازل</div><div class="why-desc">أفضل الخامات وأعلى معايير التشطيب في كل مشروع نُنفّذه</div></div>
+      <div class="why-item"><div class="why-num">02</div><div class="why-title">الالتزام بالمواعيد</div><div class="why-desc">خطط تسليم واضحة ومتابعة دقيقة من البداية حتى النهاية</div></div>
+      <div class="why-item" style="border-bottom:none;"><div class="why-num">03</div><div class="why-title">مرونة في التنفيذ</div><div class="why-desc">نُنفّذ أصعب التصاميم وأكثرها تخصيصاً وفق رؤية العميل</div></div>
+      <div class="why-item" style="border-bottom:none;"><div class="why-num">04</div><div class="why-title">خبرة ميدانية</div><div class="why-desc">سنوات من الخبرة في أعمال التجهيز الداخلي للقطاعات الثلاثة</div></div>
+    </div>
+  </div>
+
+  <div class="chapter-bar"><div class="chapter-num">07 / المستندات الرسمية</div><div class="chapter-title">Documents</div></div>
+  <div class="docs-section">
+    <div class="docs-header">
+      <div class="docs-title">الشهادات الرسمية</div>
+      <div class="docs-sub">Official Certificates</div>
+    </div>
+    <div class="docs-grid">
+      <a class="doc-card" href="شهادة السجل التجاري.pdf" target="_blank" rel="noopener">
+        <span>
+          <span class="doc-name">شهادة السجل التجاري</span><br>
+          <span class="doc-type">Commercial Registration</span>
+        </span>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="شهادة تسجيل ضريبة القيمة المضافة.pdf" target="_blank" rel="noopener">
+        <span>
+          <span class="doc-name">شهادة تسجيل ضريبة القيمة المضافة</span><br>
+          <span class="doc-type">VAT Registration</span>
+        </span>
+        <span class="doc-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="whatsapp-section">
+    <a class="whatsapp-card" href="https://wa.me/966583832337" target="_blank" rel="noopener">
+      <span>
+        <span class="whatsapp-kicker">WhatsApp · تواصل معنا</span>
+        <span class="whatsapp-title">جاهزون لخدمة مشروعك</span>
+      </span>
+      <span class="whatsapp-contact">
+        <span class="whatsapp-number">+966583832337</span>
+        <span class="whatsapp-action">افتح المحادثة</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="rule-thick"></div>
+  <div class="footer">
+    <div><img class="footer-logo" src="excsol-logo-white.png" alt="EXCSOL"><div class="footer-sub">Exceptional Solution · الحل الاستثنائي</div></div>
+    <div class="footer-right"><div class="footer-tag">الشركة المتحدة للأعمال الخشبية</div><div class="footer-copy">© 2025 · Wood & Interior Specialists</div></div>
+  </div>
+</div>
+<div class="gallery-modal" id="projectGallery" aria-hidden="true">
+  <div class="gallery-dialog" role="dialog" aria-modal="true" aria-label="صور المشروع">
+    <div class="gallery-head">
+      <div class="gallery-title">صور مشروع مطار الملك خالد</div>
+      <button class="gallery-close" type="button" aria-label="إغلاق">×</button>
+    </div>
+    <div class="gallery-main"><img id="galleryMainImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt=""></div>
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+</div>
+<script>
+(() => {
+  const counters = document.querySelectorAll('.stat-big[data-target]');
+  const animateCounter = (el) => {
+    if (el.dataset.done === 'true') return;
+    el.dataset.done = 'true';
+    el.classList.add('is-animating');
+    const target = Number(el.dataset.target || 0);
+    const prefix = el.dataset.prefix || '';
+    const duration = 1200;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = `${prefix}${Math.round(target * eased)}`;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = `${prefix}${target}`;
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) animateCounter(entry.target);
+      });
+    }, { threshold: 0.45 });
+    counters.forEach((counter) => observer.observe(counter));
+  } else {
+    counters.forEach(animateCounter);
+  }
+})();
+
+(() => {
+  document.querySelectorAll('.featured-slider').forEach((slider) => {
+    const track = slider.querySelector('.featured-grid');
+    const prevButton = slider.querySelector('.featured-arrow.prev');
+    const nextButton = slider.querySelector('.featured-arrow.next');
+    if (!track || !prevButton || !nextButton) return;
+
+    const getStep = () => {
+      const card = track.querySelector('.project-card');
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return card ? card.getBoundingClientRect().width + gap : 310;
+    };
+
+    prevButton.addEventListener('click', () => {
+      track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+    });
+    nextButton.addEventListener('click', () => {
+      track.scrollBy({ left: getStep(), behavior: 'smooth' });
+    });
+  });
+})();
+
+(() => {
+  document.querySelectorAll('.gallery-strip').forEach((strip) => {
+    const track = strip.querySelector('.gallery-track');
+    if (!track) return;
+
+    const makeButton = (className, label, symbol) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `carousel-btn ${className}`;
+      button.setAttribute('aria-label', label);
+      button.textContent = symbol;
+      strip.appendChild(button);
+      return button;
+    };
+
+    const prevButton = makeButton('prev', 'الصورة السابقة', '‹');
+    const nextButton = makeButton('next', 'الصورة التالية', '›');
+    let position = 0;
+    let lastFrame = performance.now();
+    const speed = 0.045;
+
+    const getLoopWidth = () => track.scrollWidth / 2;
+    const getStepWidth = () => {
+      const item = track.querySelector('.grid-item');
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return item ? item.getBoundingClientRect().width + gap : 320;
+    };
+    const render = () => {
+      const loopWidth = getLoopWidth();
+      if (loopWidth > 0) {
+        position = ((position % loopWidth) + loopWidth) % loopWidth;
+      }
+      track.style.setProperty('--marquee-x', `${position}px`);
+    };
+    const move = (direction) => {
+      position += direction * getStepWidth();
+      render();
+    };
+    const tick = (now) => {
+      position += (now - lastFrame) * speed;
+      lastFrame = now;
+      render();
+      requestAnimationFrame(tick);
+    };
+
+    prevButton.addEventListener('click', () => move(-1));
+    nextButton.addEventListener('click', () => move(1));
+    requestAnimationFrame(tick);
+  });
+})();
+
+(() => {
+  const galleries = {
+    kkia: {
+      title: 'صور مشروع مطار الملك خالد',
+      images: [
+        'ChatGPT Image May 13, 2026, 12_11_03 PM.png',
+        'ChatGPT Image May 13, 2026, 11_56_54 AM (2).png',
+        'ChatGPT Image May 13, 2026, 11_59_08 AM.png',
+        'ChatGPT Image May 16, 2026, 07_20_40 PM.png'
+      ]
+    },
+    sama: {
+      title: 'صور مشروع SAMA',
+      images: [
+        'ChatGPT Image May 16, 2026, 08_20_57 PM.png',
+        'ChatGPT Image May 18, 2026, 03_09_28 PM.png',
+        'ChatGPT Image May 18, 2026, 03_11_49 PM.png',
+        'ChatGPT Image May 18, 2026, 03_26_38 PM.png'
+      ]
+    },
+    elfanar: {
+      title: 'صور مشروع ELFANAR',
+      images: [
+        'ChatGPT Image May 18, 2026, 03_32_58 PM.png',
+        'ChatGPT Image May 19, 2026, 02_05_50 PM.png',
+        'ChatGPT Image May 19, 2026, 02_08_29 PM.png',
+        'ChatGPT Image May 16, 2026, 08_32_06 PM.png',
+        'ChatGPT Image May 19, 2026, 02_12_17 PM.png'
+      ]
+    },
+    tabuk: {
+      title: 'صور مشروع تبوك',
+      images: [
+        'ChatGPT Image May 16, 2026, 07_23_39 PM.png',
+        'ChatGPT Image May 16, 2026, 07_38_28 PM.png',
+        'ChatGPT Image May 19, 2026, 02_21_17 PM.png',
+        'ChatGPT Image May 19, 2026, 02_21_38 PM.png',
+        'ChatGPT Image May 16, 2026, 07_54_12 PM.png',
+        'ChatGPT Image May 16, 2026, 07_47_18 PM.png',
+        'ChatGPT Image May 16, 2026, 07_47_15 PM.png'
+      ]
+    }
+  };
+  const modal = document.getElementById('projectGallery');
+  const mainImage = document.getElementById('galleryMainImage');
+  const thumbs = document.getElementById('galleryThumbs');
+  const title = modal.querySelector('.gallery-title');
+  const closeBtn = modal.querySelector('.gallery-close');
+  const placeholderImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+  const setImage = (src, activeButton) => {
+    mainImage.src = src;
+    mainImage.alt = title.textContent;
+    thumbs.querySelectorAll('.gallery-thumb').forEach((button) => button.classList.remove('is-active'));
+    if (activeButton) activeButton.classList.add('is-active');
+  };
+
+  const openGallery = (galleryId) => {
+    const gallery = galleries[galleryId];
+    if (!gallery) return;
+    title.textContent = gallery.title;
+    thumbs.innerHTML = '';
+    gallery.images.forEach((src, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gallery-thumb';
+      button.innerHTML = `<img src="${src}" alt="${gallery.title} ${index + 1}">`;
+      button.addEventListener('click', () => setImage(src, button));
+      thumbs.appendChild(button);
+      if (index === 0) setImage(src, button);
+    });
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeGallery = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    mainImage.src = placeholderImage;
+  };
+
+  document.querySelectorAll('[data-gallery]').forEach((button) => {
+    button.addEventListener('click', () => openGallery(button.dataset.gallery));
+  });
+  closeBtn.addEventListener('click', closeGallery);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeGallery();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) closeGallery();
+  });
+})();
+</script>
+</body>
+</html>
